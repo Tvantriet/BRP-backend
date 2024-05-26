@@ -4,7 +4,7 @@ WORKDIR /src
 #copy all projects files .csproj
 COPY ["FietsRoute-Backend/FietsRoute-Backend/FietsRoute-Backend.csproj", "FietsRoute-Backend/"]
 COPY ["FietsRoute-Backend/Business/Business.csproj", "Business/"]
-#COPY ["FietsRoute-Backend/Data/Data.csproj", "Data/"]
+COPY ["Data/Data.csproj", "Data/"]
 
 RUN dotnet restore
 COPY . .
