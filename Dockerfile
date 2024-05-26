@@ -1,12 +1,10 @@
 # Stage 1: Build the application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-
-# Copy the project files and restore dependencies
-COPY ["FietsRoute-Backend/FietsRoute-Backend.csproj", "FietsRoute-Backend/"]
-COPY ["Business/Business.csproj", "Business/"]
-COPY ["Data/Data.csproj", "Data/"]
-RUN dotnet restore "FietsRoute-Backend/FietsRoute-Backend.csproj"
+#copy all projects files .csproj
+COPY ["FietsRoute-Backend/FietsRoute-Backend/FietsRoute-Backend.csproj", "FietsRoute-Backend/"]
+COPY ["FietsRoute-Backend/Business/Business.csproj", "Business/"]
+#COPY ["FietsRoute-Backend/Data/Data.csproj", "Data/"]
 
 # Copy the entire source code
 COPY . .
