@@ -46,4 +46,4 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/aspnetcore-app:latest
           context: ./FietsRoute-Backend
-          file: ./FietsRoute-Backendp/Dockerfile
+          file: ./FietsRoute-Backend/Dockerfile
