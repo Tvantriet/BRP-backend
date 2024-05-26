@@ -2,9 +2,10 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 #copy all projects files .csproj
-COPY FietsRoute-Backend/*.csproj ./
-COPY FietsRoute-Backend/Data/*.csproj ./Data/
-COPY FietsRoute-Backend/Business/*.csproj ./Business/
+COPY ./src/FietsRoute-Backend.csproj
+COPY ./src/Data/Data.csproj
+COPY ./src/Business/Business.csproj
+
 
 RUN dotnet restore
 COPY . .
