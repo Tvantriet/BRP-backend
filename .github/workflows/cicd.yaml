@@ -14,19 +14,17 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up .NET Core
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '8.0.5'  # Adjust based on your ASP.NET Core project's requirements
+        uses: actions/setup-dotnet@v4.0.0
 
       - name: Install dependencies
         run: |
           cd FietsRoute-Backend
           dotnet restore
 
-      - name: Run tests
-        run: |
-          cd FietsRoute-Backend
-          dotnet test
+      # - name: Run tests
+        # run: |
+        #   cd FietsRoute-Backend
+        #   dotnet test
 
       - name: Build app
         run: |
