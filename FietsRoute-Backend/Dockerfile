@@ -3,8 +3,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 #copy all projects files .csproj
 COPY ["FietsRoute-Backend/FietsRoute-Backend.csproj", "FietsRoute-Backend/"]
-COPY ["FietsRoute-Backend.Business/FietsRoute-Backend.Business.csproj", "FietsRoute-Backend.Business/"]
-COPY ["FietsRoute-Backend.Data/FietsRoute-Backend.Data.csproj", "FietsRoute-Backend.Data/"]
+COPY ["Business/Business.csproj", "Business/"]
+COPY ["Data/Data.csproj", "Data/"]
 
 RUN dotnet restore
 COPY . .
