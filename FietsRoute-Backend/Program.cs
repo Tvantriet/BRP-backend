@@ -2,6 +2,8 @@ using FietsRoute_Backend.Controllers;
 using Business.Services;
 using Data;
 using Microsoft.EntityFrameworkCore;
+using FietsRoute_Backend.Hubs;
+using Google.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +20,15 @@ builder.Services.AddDbContext<DefaultContext>(options =>
     options.UseSqlServer(connectionString);
 });
     
-builder.Services.AddHttpClient(); 
+builder.Services.AddHttpClient();
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
 
 builder.Services.AddScoped<WeatherService>(); 
 builder.Services.AddScoped<RouteService>();
+builder.Services.AddScoped<RouteServiceSimple>();
+builder.Services.AddScoped<CityService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyAllowedOrigins",
@@ -31,6 +38,7 @@ builder.Services.AddCors(options =>
         policy.WithOrigins("http://localhost:5173"); // dev
         policy.AllowAnyHeader();
         policy.AllowAnyMethod();
+        policy.AllowCredentials();
     });
 });
 
@@ -48,6 +56,8 @@ app.UseCors("MyAllowedOrigins");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.MapHub<ChatHub>("ChatHub");
 
 app.MapControllers();
 

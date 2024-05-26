@@ -5,17 +5,17 @@ namespace FietsRoute_Backend.Controllers
 {
     public class RouteController : Controller
     {
-        private readonly RouteService _routeService;
-        public RouteController(RouteService routeService)
+        private readonly RouteServiceSimple _routeService;
+        public RouteController(RouteServiceSimple routeService)
         {
             _routeService = routeService;
         }
-        [HttpGet("computeRoute")]
-        public async Task<IActionResult> GetWeatherForecast(double sLat, double eLat, double sLong, double eLong)
+        [HttpGet("route")]
+        public async Task<IActionResult> GetRoute(int departureId, int destinationId)
         {
             try
             {
-                var forecast = await _routeService.GetRouteAsync(sLat, sLong, eLat, eLong);
+                var forecast = await _routeService.GetRoute(departureId, destinationId);
                 return Ok(forecast);
             }
             catch

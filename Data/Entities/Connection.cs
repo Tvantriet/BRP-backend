@@ -2,7 +2,7 @@
 
 namespace Data.Entities
 {
-    public class Route : DBEntity
+    public class Connection : DBEntity
     {
         public int DepartureCityId { get; set; }
 

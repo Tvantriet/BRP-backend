@@ -11,11 +11,11 @@ namespace FietsRoute_Backend.Controllers
             _weatherService = weatherService;
         }
         [HttpGet("forecast")]
-        public async Task<IActionResult> GetWeatherForecast(double lon, double lat)
+        public async Task<IActionResult> GetWeatherForecast(double departure, double arrival)
         {
             try
             {
-                var forecast = await _weatherService.GetWeatherForecastAsync(lon, lat, DateTime.Now);
+                var forecast = await _weatherService.GetWeatherForecastAsync(departure, arrival, DateTime.Now);
                 return Ok(forecast);
             }
             catch
