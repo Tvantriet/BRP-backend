@@ -3,9 +3,11 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy the project files and restore dependencies
+RUN echo "$PWD"
+
 COPY ["FietsRoute-Backend/FietsRoute-Backend.csproj", "FietsRoute-Backend/"]
-COPY ["Business/Business.csproj", "Business/"]
-COPY ["Data/Data.csproj", "Data/"]
+COPY ["C:/Users/Timvt/Source/Repos/Business/Business.csproj", "Business/"]
+COPY ["C:/Users/Timvt/Source/Repos/FietsRoute-Backend/Data", "Data/"]
 RUN dotnet restore "FietsRoute-Backend/FietsRoute-Backend.csproj"
 
 # Copy the entire source code
