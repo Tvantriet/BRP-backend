@@ -1,9 +1,7 @@
 # Stage 1: Build the application
-RUN echo "$PWD"
-
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-
+RUN echo "$PWD"
 # Copy the project files and restore dependencies
 COPY ["FietsRoute-Backend/FietsRoute-Backend.csproj", "FietsRoute-Backend/"]
 COPY ["C:/Users/Timvt/Source/Repos/Business/Business.csproj", "Business/"]
