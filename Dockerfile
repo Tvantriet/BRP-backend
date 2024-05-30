@@ -8,7 +8,7 @@ RUN echo "Current directory in build stage:" && pwd
 # Copy the project files and restore dependencies
 COPY ["FietsRoute-Backend/FietsRoute-Backend.csproj", "FietsRoute-Backend/"]
 COPY ["Business/Business.csproj", "Business/"]
-COPY ["Data", "Data/"]
+COPY ["Data/Data.csproj", "Data/"]
 
 # List contents of /src to verify files were copied
 RUN echo "Contents of /src:" && ls -la /src
