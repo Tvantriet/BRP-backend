@@ -25,20 +25,20 @@ jobs:
         # run: |
         #   cd FietsRoute-Backend
         #   dotnet test
-        
-      - name: Set up projects
-        uses: security-code-scan/security-code-scan-add-action@main
+                      
+      - name: Is Website vulnerable
+        uses: lirantal/is-website-vulnerable@v1.14.8
         
       - name: Build app
         run: |
           cd FietsRoute-Backend
           dotnet publish -c Release -o ./publish
           
-      - name: Convert sarif for uploading to GitHub
-        uses: security-code-scan/security-code-scan-results-action@main
+      # - name: Convert sarif for uploading to GitHub
+      #   uses: security-code-scan/security-code-scan-results-action@main
         
-      - name: Upload sarif	
-        uses: github/codeql-action/upload-sarif@v1
+      # - name: Upload sarif	
+      #   uses: github/codeql-action/upload-sarif@v1
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
