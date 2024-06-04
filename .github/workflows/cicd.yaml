@@ -25,28 +25,20 @@ jobs:
         # run: |
         #   cd FietsRoute-Backend
         #   dotnet test
-
+        
+      - name: Set up projects
+        uses: security-code-scan/security-code-scan-add-action@v1.2
+        
       - name: Build app
         run: |
           cd FietsRoute-Backend
           dotnet publish -c Release -o ./publish
           
-      - name: Install .NET Security Guard
-        run: dotnet tool install --global dotnet-security-guard
-
-      - name: Add .NET tools to PATH
-        run: echo "/home/runner/.dotnet/tools" >> $GITHUB_PATH
-
-      - name: Run .NET Security Guard
-        run: |
-          cd FietsRoute-Backend
-          security-guard --input $(pwd) --output security-report.html
-
-      - name: Upload security report artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: security-report
-          path: FietsRoute-Backend/security-report.html
+      - name: Convert sarif for uploading to GitHub
+        uses: security-code-scan/security-code-scan-results-action@v1
+        
+      - name: Upload sarif	
+        uses: github/codeql-action/upload-sarif@v1
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
