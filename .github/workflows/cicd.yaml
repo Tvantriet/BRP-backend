@@ -28,7 +28,10 @@ jobs:
                       
       - name: Is Website vulnerable
         uses: lirantal/is-website-vulnerable@v1.14.8
-        
+
+      - name: ZAP Full Scan
+        uses: zaproxy/action-full-scan@v0.10.0
+            
       - name: Build app
         run: |
           cd FietsRoute-Backend
