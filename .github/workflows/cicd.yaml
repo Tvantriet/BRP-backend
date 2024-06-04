@@ -30,6 +30,23 @@ jobs:
         run: |
           cd FietsRoute-Backend
           dotnet publish -c Release -o ./publish
+          
+      - name: Install .NET Security Guard
+        run: dotnet tool install --global dotnet-security-guard
+
+      - name: Add .NET tools to PATH
+        run: echo "/home/runner/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Run .NET Security Guard
+        run: |
+          cd FietsRoute-Backend
+          security-guard --input $(pwd) --output security-report.html
+
+      - name: Upload security report artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: security-report
+          path: FietsRoute-Backend/security-report.html
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
