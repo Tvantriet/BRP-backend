@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Business.Services;
 using Business;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FietsRoute_Backend.Controllers
 {
@@ -63,7 +64,7 @@ namespace FietsRoute_Backend.Controllers
             }
         }
         [HttpGet("connections")]
-        public async Task<IActionResult> GetCityConnections()
+        public IActionResult GetCityConnections()
         {
             try
             {
@@ -73,6 +74,13 @@ namespace FietsRoute_Backend.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while adding city connection.");
             }
+        }
+        [Authorize]
+        [HttpGet("krabby-patty-formula")]
+        public IActionResult GetFormula()
+        {
+            string formula = "the secret formula";
+            return Ok(formula);
         }
     }
 }

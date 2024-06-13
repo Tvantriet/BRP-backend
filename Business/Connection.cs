@@ -11,8 +11,8 @@ namespace Business
         public int Id { get; set; }
         public City Departure { get; set; }
         public City Destination { get; set; }
-        public int Distance { get; set; }
-        public int Duration { get; set; }
-        public int Direction { get; set; }
+        public double Distance { get; set; }
+        public double Duration { get; set; }
+        public double Direction { get; set; }
     }
 }
