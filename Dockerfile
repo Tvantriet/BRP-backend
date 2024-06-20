@@ -1,6 +1,7 @@
 # Stage 1: Build the application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
+EXPOSE 7237
 
 # Print the current directory to verify the context
 RUN echo "Current directory in build stage:" && pwd
