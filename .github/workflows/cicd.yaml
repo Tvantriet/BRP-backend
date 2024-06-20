@@ -21,10 +21,10 @@ jobs:
           cd FietsRoute-Backend
           dotnet restore
 
-      # - name: Run tests
-        # run: |
-        #   cd FietsRoute-Backend
-        #   dotnet test
+      - name: Run tests
+        run: |
+          cd FietsRoute-Backend
+          dotnet test
                       
       # - name: Is Website vulnerable
       #   uses: lirantal/is-website-vulnerable@v1.14.8
